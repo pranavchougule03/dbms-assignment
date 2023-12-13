@@ -1,0 +1,23 @@
+for python connectivity
+python3 -m venv ./dbms
+pip install mysql-connector-python 
+
+
+
+
+sudo docker network create --driver bridge test_network                                                                         bridge network
+sudo docker run --name some-mysql --network test_network -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest                    mysql to network
+sudo docker exec -it some-mysql bash                                                                                            mysql database creation
+mysql -p
+my-secret-pw
+create database Feedback;
+use Feedback;
+CREATE TABLE student_feedback (
+    roll_number INT PRIMARY KEY,
+    student_name VARCHAR(255),
+    course_name VARCHAR(255),
+    course_feedback VARCHAR(255)
+);
+
+sudo docker build -t pranav .                                                                                                   build container
+sudo docker run -d -itd --name node_container -p 3000:3000 --network test_network pranav:latest                                 node to network
